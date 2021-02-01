@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/BaseScene.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Prefabs/Level/MovingPlatform.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Prefabs/Level/VineDoorPressurePad.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Prefabs/Level/VineDoor.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Prefabs/Level/Lever.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Prefabs/Level/Crate.tscn" type="PackedScene" id=6]
+
+[node name="Level8" instance=ExtResource( 1 )]
+
+[node name="Layout" parent="Level" index="1"]
+tile_data = PoolIntArray( 65536, 0, 0, 65537, 0, 1, 65538, 0, 1, 65539, 0, 1, 65540, 0, 1, 65541, 0, 1, 65542, 0, 1, 65543, 0, 2, 131072, 0, 65536, 131073, 0, 3, 131074, 0, 131073, 131075, 0, 131073, 131076, 0, 131073, 131077, 0, 131073, 131078, 0, 131073, 131079, 0, 131074, 196608, 0, 65536, 196609, 0, 65538, 262144, 0, 65536, 262145, 0, 65538, 327680, 0, 65536, 327681, 0, 65538, 393216, 0, 65536, 393217, 0, 65538, 458752, 0, 65536, 458753, 0, 65539, 458754, 0, 1, 458755, 0, 1, 458756, 0, 1, 458757, 0, 1, 458758, 0, 1, 458759, 0, 1, 458760, 0, 1, 458761, 0, 2, 524288, 0, 131072, 524289, 0, 4, 524290, 0, 65537, 524291, 0, 3, 524292, 0, 131073, 524293, 0, 131073, 524294, 0, 131073, 524295, 0, 131073, 524296, 0, 131073, 524297, 0, 131074, 589825, 0, 65536, 589826, 0, 65537, 589827, 0, 65538, 655361, 0, 65536, 655362, 0, 65537, 655363, 0, 65538, 720897, 0, 65536, 720898, 0, 65537, 720899, 0, 65538, 786433, 0, 65536, 786434, 0, 65537, 786435, 0, 65538, 786451, 0, 196608, 786452, 0, 196609, 786453, 0, 196609, 786454, 0, 196610, 851969, 0, 65536, 851970, 0, 65537, 851971, 0, 65538, 851976, 0, 0, 851977, 0, 1, 851978, 0, 2, 917505, 0, 65536, 917506, 0, 65537, 917507, 0, 65538, 917512, 0, 65536, 917513, 0, 3, 917514, 0, 131074, 983041, 0, 65536, 983042, 0, 65537, 983043, 0, 65538, 983048, 0, 131072, 983049, 0, 131074, 1048577, 0, 65536, 1048578, 0, 65537, 1048579, 0, 65538, 1114113, 0, 65536, 1114114, 0, 65537, 1114115, 0, 65538, 1179649, 0, 65536, 1179650, 0, 65537, 1179651, 0, 65539, 1179652, 0, 1, 1179653, 0, 1, 1179654, 0, 1, 1179655, 0, 1, 1179656, 0, 1, 1179657, 0, 1, 1179658, 0, 1, 1179659, 0, 1, 1179660, 0, 1, 1179661, 0, 1, 1179662, 0, 1, 1179663, 0, 1, 1179664, 0, 1, 1179665, 0, 1, 1179666, 0, 1, 1179667, 0, 1, 1179668, 0, 1, 1179669, 0, 1, 1179670, 0, 1, 1179671, 0, 1, 1179672, 0, 1, 1179673, 0, 1, 1179674, 0, 1, 1179675, 0, 1, 1179676, 0, 2, 1245185, 0, 131072, 1245186, 0, 131073, 1245187, 0, 131073, 1245188, 0, 131073, 1245189, 0, 131073, 1245190, 0, 131073, 1245191, 0, 131073, 1245192, 0, 131073, 1245193, 0, 131073, 1245194, 0, 131073, 1245195, 0, 131073, 1245196, 0, 131073, 1245197, 0, 131073, 1245198, 0, 131073, 1245199, 0, 131073, 1245200, 0, 131073, 1245201, 0, 131073, 1245202, 0, 131073, 1245203, 0, 131073, 1245204, 0, 131073, 1245205, 0, 131073, 1245206, 0, 131073, 1245207, 0, 131073, 1245208, 0, 131073, 1245209, 0, 131073, 1245210, 0, 131073, 1245211, 0, 131073, 1245212, 0, 131074 )
+
+[node name="EnterDoor" parent="Level/LevelElements" index="0"]
+position = Vector2( 375.263, 264.387 )
+
+[node name="ExitDoor" parent="Level/LevelElements" index="1"]
+LevelName = "EndLevel"
+
+[node name="VineDoor" parent="Level/LevelElements" index="2" instance=ExtResource( 4 )]
+position = Vector2( 101, 81.5093 )
+
+[node name="VineDoor2" parent="Level/LevelElements" index="3" instance=ExtResource( 4 )]
+position = Vector2( 96, 222.271 )
+rotation = 1.5708
+
+[node name="VineDoorPressurePad" parent="Level/LevelElements" index="4" instance=ExtResource( 3 )]
+position = Vector2( 80.4808, 280.087 )
+Door = "VineDoor2"
+
+[node name="VineDoorPressurePad2" parent="Level/LevelElements" index="5" instance=ExtResource( 3 )]
+position = Vector2( 137, 104 )
+
+[node name="MovingPlatform" parent="Level/LevelElements" index="6" instance=ExtResource( 2 )]
+position = Vector2( 210, 100 )
+MovePos = PoolVector2Array( 210, 100, 210, 200 )
+
+[node name="Lever" parent="Level/LevelElements" index="7" instance=ExtResource( 5 )]
+position = Vector2( 338.763, 175.19 )
+
+[node name="Crate" parent="Level/LevelElements" index="8" instance=ExtResource( 6 )]
+position = Vector2( 213.263, 263.778 )
+
+[node name="Player" parent="." index="3"]
+position = Vector2( 380.263, 271.778 )

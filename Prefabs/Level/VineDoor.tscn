@@ -1,0 +1,182 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Graphics/Level/VineDoor.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Level/VineDoor.cs" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 32.0496 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "DoorClose"
+length = 0.95
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("GFX:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Collider:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.05, 0.95 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "PlayeSoundEffect"
+}, {
+"args": [  ],
+"method": "Animate"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "DoorDefault"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Collider:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GFX:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 19 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "DoorOpen"
+length = 0.95
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("GFX:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Collider:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.05, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "PlayeSoundEffect"
+}, {
+"args": [  ],
+"method": "Animate"
+} ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "DoorClose"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "DoorDefault"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "DoorOpen"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=12]
+states/DoorClose/node = SubResource( 5 )
+states/DoorClose/position = Vector2( 710, 152 )
+states/DoorDefault/node = SubResource( 6 )
+states/DoorDefault/position = Vector2( 544, 79 )
+states/DoorOpen/node = SubResource( 7 )
+states/DoorOpen/position = Vector2( 363, 152 )
+transitions = [ "DoorDefault", "DoorOpen", SubResource( 8 ), "DoorOpen", "DoorClose", SubResource( 9 ), "DoorClose", "DoorOpen", SubResource( 10 ), "DoorClose", "DoorDefault", SubResource( 11 ) ]
+start_node = "DoorDefault"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=13]
+
+[node name="VineDoor" type="StaticBody2D"]
+position = Vector2( 320, 100 )
+collision_layer = 128
+collision_mask = 22
+script = ExtResource( 2 )
+
+[node name="GFX" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 20
+frame = 19
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Animations" type="AnimationPlayer" parent="."]
+anims/DoorClose = SubResource( 2 )
+anims/DoorDefault = SubResource( 3 )
+anims/DoorOpen = SubResource( 4 )
+
+[node name="Animator" type="AnimationTree" parent="."]
+tree_root = SubResource( 12 )
+anim_player = NodePath("../Animations")
+parameters/playback = SubResource( 13 )

@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Level/Tutorial.cs" type="Script" id=1]
+[ext_resource path="res://Graphics/Level/Tutorials/CloseButton.png" type="Texture" id=2]
+[ext_resource path="res://Graphics/Level/Tutorials/NextButton.png" type="Texture" id=3]
+[ext_resource path="res://Graphics/Level/Tutorials/PreviousButton.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 35.9871, 53.4662 )
+
+[node name="Tutorial" type="Area2D"]
+position = Vector2( 300, 271.924 )
+z_index = 20
+input_pickable = false
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="TutorialHolder" type="Node2D" parent="."]
+
+[node name="Next" type="Button" parent="."]
+margin_left = 35.0
+margin_top = -60.0
+margin_right = 85.0
+margin_bottom = -36.0
+icon = ExtResource( 3 )
+flat = true
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Previous" type="Button" parent="."]
+margin_left = -80.0
+margin_top = -60.0
+margin_right = -30.0
+margin_bottom = -36.0
+icon = ExtResource( 4 )
+flat = true
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Close" type="Button" parent="."]
+margin_left = 35.0
+margin_top = -60.0
+margin_right = 73.0
+margin_bottom = -36.0
+icon = ExtResource( 2 )
+flat = true
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="body_entered" from="." to="." method="_on_Tutorial_body_entered"]
+[connection signal="pressed" from="Next" to="." method="_on_Next_pressed"]
+[connection signal="pressed" from="Previous" to="." method="_on_Previous_pressed"]
+[connection signal="pressed" from="Close" to="." method="_on_Close_pressed"]

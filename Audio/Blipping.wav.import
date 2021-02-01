@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Blipping.wav-d4d2d13024868a5b600ec49a2d1a5576.sample"
+
+[deps]
+
+source_file="res://Audio/Blipping.wav"
+dest_files=[ "res://.import/Blipping.wav-d4d2d13024868a5b600ec49a2d1a5576.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

@@ -1,0 +1,212 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scripts/Player/Recorder.cs" type="Script" id=1]
+[ext_resource path="res://Graphics/Player/RecordedTimeBar.png" type="Texture" id=2]
+[ext_resource path="res://Graphics/Player/RecordTimeBar.png" type="Texture" id=3]
+[ext_resource path="res://Graphics/Player/RecordButton.png" type="Texture" id=4]
+[ext_resource path="res://Graphics/Player/ForwardButton.png" type="Texture" id=5]
+[ext_resource path="res://Graphics/Player/RewindButton.png" type="Texture" id=6]
+[ext_resource path="res://Graphics/Player/RecordTimeBarBG.png" type="Texture" id=7]
+[ext_resource path="res://Graphics/Player/CancelRecord.png" type="Texture" id=8]
+
+[node name="PlayerCanvas" type="Node2D"]
+z_index = 10
+script = ExtResource( 1 )
+
+[node name="PlayerUI" type="Control" parent="."]
+margin_right = 640.0
+margin_bottom = 360.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="RecordButton" type="TextureRect" parent="PlayerUI"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -257.0
+margin_top = -36.0
+margin_right = -225.0
+margin_bottom = -4.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="CancelButton" type="TextureRect" parent="PlayerUI"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -257.0
+margin_top = -36.0
+margin_right = -225.0
+margin_bottom = -4.0
+texture = ExtResource( 8 )
+expand = true
+
+[node name="RewindButton" type="TextureRect" parent="PlayerUI"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -215.0
+margin_top = -36.0
+margin_right = -183.0
+margin_bottom = -4.0
+texture = ExtResource( 6 )
+expand = true
+
+[node name="ForwardButton" type="TextureRect" parent="PlayerUI"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -215.0
+margin_top = -36.0
+margin_right = -183.0
+margin_bottom = -4.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="RecordCell_1" type="TextureRect" parent="PlayerUI"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -490.737
+margin_top = 324.053
+margin_right = -426.737
+margin_bottom = 356.053
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RecordedBar" type="TextureRect" parent="PlayerUI/RecordCell_1"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 58.0
+margin_bottom = 26.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RecordBar" type="TextureRect" parent="PlayerUI/RecordCell_1"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 58.0
+margin_bottom = 26.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="RecordCell_2" type="TextureRect" parent="PlayerUI"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -415.737
+margin_top = 324.053
+margin_right = -351.737
+margin_bottom = 356.053
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RecordedBar" type="TextureRect" parent="PlayerUI/RecordCell_2"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 58.0
+margin_bottom = 26.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RecordBar" type="TextureRect" parent="PlayerUI/RecordCell_2"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 58.0
+margin_bottom = 26.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="RecordCell_3" type="TextureRect" parent="PlayerUI"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -340.737
+margin_top = 324.053
+margin_right = -276.737
+margin_bottom = 356.053
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RecordedBar" type="TextureRect" parent="PlayerUI/RecordCell_3"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 58.0
+margin_bottom = 26.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RecordBar" type="TextureRect" parent="PlayerUI/RecordCell_3"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 58.0
+margin_bottom = 26.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="RecordCell_4" type="TextureRect" parent="PlayerUI"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -265.737
+margin_top = 324.053
+margin_right = -201.737
+margin_bottom = 356.053
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RecordedBar" type="TextureRect" parent="PlayerUI/RecordCell_4"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 58.0
+margin_bottom = 26.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RecordBar" type="TextureRect" parent="PlayerUI/RecordCell_4"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 58.0
+margin_bottom = 26.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="RecordTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="RewindTimer" type="Timer" parent="."]
+wait_time = 0.001
+one_shot = true
+
+[node name="ForwardTimer" type="Timer" parent="."]
+wait_time = 0.001
+one_shot = true

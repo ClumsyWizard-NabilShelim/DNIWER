@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scripts/Level/Gravity.cs" type="Script" id=1]
+[ext_resource path="res://Graphics/Level/Crates.png" type="Texture" id=2]
+[ext_resource path="res://Prefabs/RewindAble.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Graphics/Level/CrateOutline.png" type="Texture" id=4]
+[ext_resource path="res://Graphics/Player/RButton.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8.07448, 7.09918 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 0.930176 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 15.1471
+
+[node name="Crate" type="KinematicBody2D"]
+position = Vector2( 129.563, 297.166 )
+z_index = 3
+collision_layer = 16
+collision_mask = 9
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="GFX" type="Node2D" parent="."]
+z_index = 3
+
+[node name="CrateGFX" type="Sprite" parent="GFX"]
+texture = ExtResource( 2 )
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 1 )
+shape = SubResource( 1 )
+
+[node name="OneWayCollision" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="Collider" type="CollisionShape2D" parent="OneWayCollision"]
+position = Vector2( 0, -7 )
+shape = SubResource( 2 )
+one_way_collision = true
+
+[node name="PickCol" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Collider" type="CollisionShape2D" parent="PickCol"]
+shape = SubResource( 3 )
+
+[node name="R" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -20 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 5 )
+
+[node name="RewindAble" parent="." instance=ExtResource( 3 )]
+RecordPosition = true
+
+[node name="Collider" parent="RewindAble" index="0"]
+shape = SubResource( 4 )
+
+[node name="Outline" type="Sprite" parent="RewindAble"]
+texture = ExtResource( 4 )
+
+[editable path="RewindAble"]

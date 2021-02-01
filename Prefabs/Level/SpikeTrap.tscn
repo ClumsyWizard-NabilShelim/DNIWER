@@ -1,0 +1,183 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Graphics/Level/SpikeTrap.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Level/SpikeTrap.cs" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12.3948, 8.25275 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "SpikeDefault"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("GFX:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Collider:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "SpikeIn"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("GFX:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 1, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Collider:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "PlayeSoundEffect"
+}, {
+"args": [  ],
+"method": "Animate"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "SpikeOut"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("GFX:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Collider:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "PlayeSoundEffect"
+}, {
+"args": [  ],
+"method": "Animate"
+} ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "SpikeDefault"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "SpikeIn"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "SpikeOut"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=12]
+states/SpikeDefault/node = SubResource( 5 )
+states/SpikeDefault/position = Vector2( 536, 33 )
+states/SpikeIn/node = SubResource( 6 )
+states/SpikeIn/position = Vector2( 412, 136 )
+states/SpikeOut/node = SubResource( 7 )
+states/SpikeOut/position = Vector2( 693, 136 )
+transitions = [ "SpikeIn", "SpikeOut", SubResource( 8 ), "SpikeOut", "SpikeIn", SubResource( 9 ), "SpikeDefault", "SpikeOut", SubResource( 10 ), "SpikeIn", "SpikeDefault", SubResource( 11 ) ]
+start_node = "SpikeDefault"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=13]
+
+[node name="SpikeTrap" type="Area2D"]
+position = Vector2( 320, 100 )
+collision_layer = 8
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="GFX" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 3
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 7.67319 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Animations" type="AnimationPlayer" parent="."]
+anims/SpikeDefault = SubResource( 2 )
+anims/SpikeIn = SubResource( 3 )
+anims/SpikeOut = SubResource( 4 )
+
+[node name="Animator" type="AnimationTree" parent="."]
+tree_root = SubResource( 12 )
+anim_player = NodePath("../Animations")
+parameters/playback = SubResource( 13 )

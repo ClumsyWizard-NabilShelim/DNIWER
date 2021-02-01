@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Fonts/MainMenu_dynamicfont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scripts/Level/MainMenu.cs" type="Script" id=2]
+[ext_resource path="res://Prefabs/Level/GameManager.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Graphics/Level/MainMenu.png" type="Texture" id=4]
+[ext_resource path="res://Graphics/Level/CreditButton.png" type="Texture" id=5]
+[ext_resource path="res://Graphics/Level/PlayButton.png" type="Texture" id=6]
+[ext_resource path="res://Audio/Main.wav" type="AudioStream" id=7]
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameManager" parent="." instance=ExtResource( 3 )]
+
+[node name="UserUI" parent="GameManager" index="1"]
+visible = false
+
+[node name="UI" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="BG" type="TextureRect" parent="UI"]
+margin_right = 640.0
+margin_bottom = 360.0
+mouse_filter = 2
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" type="Button" parent="UI"]
+margin_left = 76.1815
+margin_top = 172.891
+margin_right = 176.181
+margin_bottom = 229.891
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.298039, 0.121569, 0, 1 )
+icon = ExtResource( 6 )
+flat = true
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credit" type="Button" parent="UI"]
+margin_left = 76.6797
+margin_top = 226.891
+margin_right = 189.68
+margin_bottom = 283.891
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.568627, 0.894118, 0.180392, 1 )
+icon = ExtResource( 5 )
+flat = true
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
+[connection signal="button_down" from="UI/PlayButton" to="UI" method="_on_PlayButton_button_down"]
+[connection signal="button_down" from="UI/Credit" to="UI" method="_on_Credit_button_down"]
+
+[editable path="GameManager"]

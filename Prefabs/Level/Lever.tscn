@@ -1,0 +1,79 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Scripts/Level/Lever.cs" type="Script" id=1]
+[ext_resource path="res://Graphics/Level/Lever.png" type="Texture" id=2]
+[ext_resource path="res://Prefabs/RewindAble.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Graphics/Level/LeverOutline.png" type="Texture" id=4]
+[ext_resource path="res://Graphics/Player/RButton.png" type="Texture" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": false,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 25.3989
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 26.7055
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 34, 34 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 4 )
+region = Rect2( 34, 0, 34, 34 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ SubResource( 6 ), SubResource( 7 ) ],
+"loop": false,
+"name": "default",
+"speed": 20.0
+} ]
+
+[node name="Lever" type="Area2D"]
+position = Vector2( 141.938, 278.253 )
+collision_layer = 0
+collision_mask = 18
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+Platform = "MovingPlatform"
+
+[node name="GFX" type="AnimatedSprite" parent="."]
+z_index = 5
+frames = SubResource( 3 )
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource( 4 )
+
+[node name="R" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -25 )
+texture = ExtResource( 5 )
+
+[node name="RewindAble" parent="." instance=ExtResource( 3 )]
+RecordBool = true
+
+[node name="Collider" parent="RewindAble" index="0"]
+shape = SubResource( 5 )
+
+[node name="Outline" type="AnimatedSprite" parent="RewindAble"]
+frames = SubResource( 8 )
+[connection signal="body_entered" from="." to="." method="_on_Lever_body_entered"]
+
+[editable path="RewindAble"]
